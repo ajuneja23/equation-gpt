@@ -164,7 +164,7 @@ class GPTLanguageModel(nn.Module):
             .view(-1, 1)
             .expand(-1, n_embd)
         )
-        self.token_embedding_table.weight.requires_grad = False
+        self.token_embedding_table[9:19].weight.requires_grad = False
         self.position_embedding_table = nn.Embedding(block_size, n_embd)
         self.blocks = nn.Sequential(
             *[Block(n_embd, n_head=n_head) for _ in range(n_layer)]
